@@ -1,0 +1,11 @@
+{
+  "name": "astroman-socket",
+  "version": "1.0.0",
+  "description": "Online game for two players",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aga",
+  "license": "ISC"
+}
