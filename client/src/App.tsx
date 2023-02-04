@@ -1,3 +1,8 @@
 import React from 'react';
+import { io } from 'socket.io-client';
 
-export const App = () => <h1>Astroman</h1>;
+const socket = io();
+
+export const App = () => {
+  return <h1>Astroman</h1>;
+};
