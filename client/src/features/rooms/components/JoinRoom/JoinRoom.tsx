@@ -27,10 +27,10 @@ export const JoinRoom = () => {
     <>
       <TextInput
         value={joinRoomCode.value}
-        placeholder="Enter room code"
+        placeholder='Enter room code'
         handleChange={joinRoomCode.handleChange}
       />
-      <Button text="Join Game" handleClick={handleJoinGameClick} />
+      <Button text='Join Game' handleClick={handleJoinGameClick} />
       {error && <p>Error: {error}</p>}
     </>
   );
