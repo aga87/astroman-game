@@ -16,13 +16,19 @@ const roomSlice = createSlice({
         ...state,
         room
       };
+    },
+    leaveRoom(state) {
+      return {
+        ...state,
+        room: null
+      };
     }
   }
 });
 
 export default roomSlice.reducer;
 
-export const { joinRoom } = roomSlice.actions;
+export const { joinRoom, leaveRoom } = roomSlice.actions;
 
 // Selectors
 export const selectRoom = (state: State): null | string => state.room;

@@ -20,3 +20,9 @@ export const joinRoom = (socket: Socket, io: Server) => {
     }
   });
 };
+
+export const leaveRoom = (socket: Socket) => {
+  socket.on('leave_room', (roomName: string) => {
+    socket.leave(roomName);
+  });
+};
