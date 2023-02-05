@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import express, { Application, Request, Response } from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
-import { createRoom } from './controllers/room';
+import { createRoom, joinRoom } from './controllers/room';
 
 dotenv.config();
 const app: Application = express();
@@ -21,6 +21,7 @@ io.on('connection', socket => {
   console.log('socket connected', socket.id);
 
   createRoom(socket);
+  joinRoom(socket, io);
 
   socket.on('disconnect', () => {
     console.log('socket disconnected', socket.id);
