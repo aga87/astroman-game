@@ -1,8 +1,6 @@
 import React from 'react';
-import { io } from 'socket.io-client';
-
-const socket = io();
+import { Rooms } from './features';
 
 export const App = () => {
-  return <h1>Astroman</h1>;
+  return <Rooms title="Astroman Multiplayer">Game will go here</Rooms>;
 };
