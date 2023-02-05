@@ -19,5 +19,5 @@ export const CreateRoom = () => {
     dispatch(joinRoom(newRoomName));
   };
 
-  return <Button text="Create New Game" handleClick={handleClick} />;
+  return <Button text='Create New Game' handleClick={handleClick} />;
 };

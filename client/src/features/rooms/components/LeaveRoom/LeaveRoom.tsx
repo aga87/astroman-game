@@ -14,5 +14,5 @@ export const LeaveRoom = () => {
     dispatch(leaveRoom());
   };
 
-  return <Button text="Leave Room" handleClick={handleLeaveRoomClick} />;
+  return <Button text='Leave Room' handleClick={handleLeaveRoomClick} />;
 };

@@ -7,7 +7,7 @@ type ButtonProps = {
 
 export const Button = ({ text, handleClick }: ButtonProps) => {
   return (
-    <button type="button" onClick={handleClick}>
+    <button type='button' onClick={handleClick}>
       {text}
     </button>
   );

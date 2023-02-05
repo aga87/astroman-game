@@ -13,7 +13,7 @@ export const TextInput = ({
 }: TextInputProps) => {
   return (
     <input
-      type="text"
+      type='text'
       placeholder={placeholder}
       value={value}
       onChange={handleChange}
