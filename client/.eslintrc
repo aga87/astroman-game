@@ -1,0 +1,30 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function"
+      }
+    ],
+    // Note: you will also need to manually disable the related @typescript-eslint/no-explicit-any rule for that line with
+    // /* eslint-disable  @typescript-eslint/no-explicit-any */
+    "@typescript-eslint/ban-ts-comment": [
+      1,
+      {
+        "ts-ignore": "allow-with-description"
+      }
+    ]
+  }
+}
