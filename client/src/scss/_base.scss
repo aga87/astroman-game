@@ -9,6 +9,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: $blh;
   color: $heather;
+  background: url('../img/sunrise-from-space.jpg') no-repeat center center fixed;
+  background-size: cover;
   background-color: $blue-charcoal;
   height: 100%;
 }
