@@ -1,6 +1,10 @@
 import React from 'react';
-import { Rooms } from './features';
+import { Game, Rooms } from './features';
 
 export const App = () => {
-  return <Rooms title='Astroman Multiplayer'>Game will go here</Rooms>;
+  return (
+    <Rooms title='Astroman Multiplayer'>
+      <Game />
+    </Rooms>
+  );
 };

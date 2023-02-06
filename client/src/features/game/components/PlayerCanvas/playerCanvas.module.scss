@@ -1,0 +1,28 @@
+@import '../../../../scss/variables/colors.module.scss';
+
+.playerCanvas {
+  max-width: 280px;
+
+  &__player {
+    text-align: center;
+    color: grey;
+    transition: color 0s ease 500ms;
+  
+    &--active {
+      color: $burnt-orange;
+      transition: color 0s ease 500ms;
+    }
+  }
+
+  &__flex {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__canvas {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
