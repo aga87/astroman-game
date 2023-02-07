@@ -13,8 +13,8 @@ export const JoinRoom = () => {
   const handleJoinGameClick = () => {
     socket.emit('join_room', joinRoomCode.value);
 
-    socket.on('join_room_error', error => {
-      setError(error);
+    socket.on('join_room_error', joinError => {
+      setError(joinError);
     });
 
     socket.on('join_room_success', () => {
@@ -30,7 +30,11 @@ export const JoinRoom = () => {
         placeholder='Enter room code'
         handleChange={joinRoomCode.handleChange}
       />
-      <Button text='Join Game' handleClick={handleJoinGameClick} />
+      <Button
+        variant='primary'
+        text='Join Game'
+        handleClick={handleJoinGameClick}
+      />
       {error && <p>Error: {error}</p>}
     </>
   );

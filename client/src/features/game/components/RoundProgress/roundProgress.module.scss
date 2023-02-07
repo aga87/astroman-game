@@ -1,0 +1,9 @@
+@import '../../../../scss/variables/colors.module.scss';
+@import '../../../../scss/helpers/modular-typography.module.scss';
+
+.roundProgress {
+  @include h4;
+  word-spacing: 0.5em;
+  color: $white;
+  padding: 0 0.1em;
+}

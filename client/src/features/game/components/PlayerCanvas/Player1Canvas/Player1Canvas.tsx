@@ -4,7 +4,11 @@ import { drawTankPL1 } from './drawTankPL1';
 import { drawOxygen } from '../drawOxygen';
 import styles from '../playerCanvas.module.scss';
 
-export const Player1Canvas = () => {
+type Player1CanvasProps = {
+  children?: React.ReactNode;
+};
+
+export const Player1Canvas = ({ children = null }: Player1CanvasProps) => {
   const canvasHeadRef = useRef<HTMLCanvasElement>(null);
   const canvasTankRef = useRef<HTMLCanvasElement>(null);
   // const nextIsPL1 = useAppSelector(selectNextTurnIsPL1);
@@ -44,12 +48,15 @@ export const Player1Canvas = () => {
           height='480'
           className={styles.playerCanvas__canvas}
         />
-        <canvas
-          ref={canvasHeadRef}
-          width='280'
-          height='300'
-          className={styles.playerCanvas__canvas}
-        />
+        <div>
+          <canvas
+            ref={canvasHeadRef}
+            width='280'
+            height='300'
+            className={styles.playerCanvas__canvas}
+          />
+          {children && children}
+        </div>
       </div>
     </div>
   );
