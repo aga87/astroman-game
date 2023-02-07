@@ -1,4 +1,6 @@
 import React from 'react';
+import { useAppSelector } from '../../redux/typed-hooks';
+import { selectIsGameOptionsModalOpen } from '../../redux/reducers';
 import {
   GameOptionsModal,
   Header,
@@ -18,8 +20,7 @@ import {
 import styles from './game.module.scss';
 
 export const Game = () => {
-  // const IsGameOptionsModalOpen = useAppSelector(IsGameOptionsModalOpen);
-  const IsGameOptionsModalOpen = false;
+  const IsGameOptionsModalOpen = useAppSelector(selectIsGameOptionsModalOpen);
 
   return (
     <>

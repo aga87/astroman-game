@@ -1,4 +1,6 @@
 import React, { useId, useRef } from 'react';
+import { useAppDispatch } from '../../../../redux/typed-hooks';
+import { closeGameOptionsModal } from '../../redux/reducers/gameUI';
 import { Button, Star } from '../../../../components';
 import { useScrollFreeze } from './useScrollFreeze';
 import menuSound from '../../audio/menu.mp3';
@@ -11,11 +13,12 @@ type GameOptionsModalProps = {
 export const GameOptionsModal = ({ children }: GameOptionsModalProps) => {
   const headingId = useId();
   const audioRef = useRef<HTMLAudioElement>(null);
+  const dispatch = useAppDispatch();
 
   const handleClick = () => {
     const audio = audioRef.current;
     audio?.play();
-    // dispatch(closeGameOptionsModal());
+    dispatch(closeGameOptionsModal());
   };
 
   // Freeze background scroll when modal is open
