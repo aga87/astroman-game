@@ -9,7 +9,7 @@ export const Player2Points = () => {
     <div className={styles.points}>
       {pointsPL2}
       <span className={styles.points__star}>
-        <Star />
+        <Star size='large' />
       </span>
     </div>
   );

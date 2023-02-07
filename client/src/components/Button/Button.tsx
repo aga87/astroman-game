@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './button.module.scss';
 
 type ButtonProps = {
-  variant: 'primary' | 'secondary' | 'animated';
+  variant: 'primary' | 'secondary' | 'tertiary' | 'animated';
   text: string;
   handleClick: () => void;
   isDisabled?: boolean;
@@ -19,6 +19,8 @@ export const Button = ({
     className = `${className} ${styles['button--secondary']}`;
   } else if (variant === 'animated') {
     className = `${className} ${styles['button--animated']}`;
+  } else if (variant === 'tertiary') {
+    className = `${className} ${styles['button--tertiary']}`;
   }
 
   return (

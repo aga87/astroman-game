@@ -2,19 +2,19 @@ import React, { useRef } from 'react';
 import { Button } from '../../../../components';
 import menuSound from '../../audio/menu.mp3';
 
-export const Menu = () => {
+export const ResetBtn = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const handleClick = () => {
     const audio = audioRef.current;
     audio?.play();
-    // dispatch(openOptions());
+    // dispatch(resetGame());
   };
 
   return (
-    <nav>
-      <Button variant='primary' text='Options' handleClick={handleClick} />
+    <>
+      <Button variant='tertiary' text='Reset Game' handleClick={handleClick} />
       <audio src={menuSound} ref={audioRef} />
-    </nav>
+    </>
   );
 };

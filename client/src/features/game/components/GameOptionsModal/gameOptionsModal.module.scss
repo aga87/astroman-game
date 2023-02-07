@@ -1,0 +1,49 @@
+@import '../../../../scss/variables/colors.module.scss';
+@import '../../../../scss/variables/typography.module.scss';
+@import '../../../../scss/helpers/modular-typography.module.scss';
+@import '../../../../scss/helpers/responsive-breakpoints.module.scss';
+
+.modal {
+  display: none;
+  // Fixed full screen
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  // Center inner modal window horizontally and vertically
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $black-07;
+  text-align: center;
+
+  &__inner {
+    width: 90%;
+    height: 25.629rem;
+    max-height: 90%;
+    overflow: auto;
+    // Center inner modal content horizontally and vertically
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: $black-09;
+    border: ($blh * 0.25rem) solid $white;
+    border-radius: 5px;
+
+    @include screen-min(30rem) {
+      width: 25.629rem;
+    }
+  }
+
+  &__heading {
+    @include h4;
+  }
+}
+
+@media only screen and (min-height: 26rem) {
+  .modal__inner {
+    padding: ($blh * 1rem) 0 ($blh * 2rem) 0;
+  }
+}
