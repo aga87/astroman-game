@@ -1,4 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  alphabet,
+  getUniqueLetterCount,
+  toCharacterArr,
+  toUnderscores
+} from '../../utils';
 
 const initialState = {
   bookKey: [] as Character[],
@@ -20,10 +26,28 @@ type State = typeof initialState;
 const gameSlice = createSlice({
   name: 'game',
   initialState,
-  reducers: {}
+  reducers: {
+    startLevel(state, action: PayloadAction<string>) {
+      const randomBook = action.payload;
+      // We will compare players' guesses against this array
+      const bookArr = toCharacterArr(randomBook);
+      const roundProgress = toUnderscores(bookArr);
+      const uniqueLetterCount = getUniqueLetterCount(bookArr);
+
+      return {
+        ...state,
+        bookKey: bookArr,
+        roundProgress,
+        uniqueLetterCount,
+        availLetters: alphabet
+      };
+    }
+  }
 });
 
 export default gameSlice.reducer;
+
+export const { startLevel } = gameSlice.actions;
 
 // Selectors
 export const selectAvailLetters = (state: State): Letter[] =>
