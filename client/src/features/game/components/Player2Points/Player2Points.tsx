@@ -1,10 +1,12 @@
 import React from 'react';
+import { useAppSelector } from '../../../../redux/typed-hooks';
+import { selectPointsPL2 } from '../../../../redux/reducers';
 import { Star } from '../../../../components';
 import styles from './player2Points.module.scss';
 
 export const Player2Points = () => {
-  // const pointsPL2 = useAppSelector(selectPointsPL1);
-  const pointsPL2 = 0;
+  const pointsPL2 = useAppSelector(selectPointsPL2);
+
   return (
     <div className={styles.points}>
       {pointsPL2}

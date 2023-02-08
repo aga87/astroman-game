@@ -1,4 +1,9 @@
 import React, { useRef, useEffect } from 'react';
+import { useAppSelector } from '../../../../../redux/typed-hooks';
+import {
+  selectChancesPL1,
+  selectIsNextTurnPL1
+} from '../../../../../redux/reducers';
 import { drawHeadPL1 } from './drawHeadPL1';
 import { drawTankPL1 } from './drawTankPL1';
 import { drawOxygen } from '../drawOxygen';
@@ -11,10 +16,8 @@ type Player1CanvasProps = {
 export const Player1Canvas = ({ children = null }: Player1CanvasProps) => {
   const canvasHeadRef = useRef<HTMLCanvasElement>(null);
   const canvasTankRef = useRef<HTMLCanvasElement>(null);
-  // const nextIsPL1 = useAppSelector(selectNextTurnIsPL1);
-  const nextIsPL1 = true;
-  // const chancesPL1 = useAppSelector(selectChancesPL1);
-  const chancesPL1 = 8;
+  const nextIsPL1 = useAppSelector(selectIsNextTurnPL1);
+  const chancesPL1 = useAppSelector(selectChancesPL1);
 
   useEffect(() => {
     const canvasHead = canvasHeadRef.current;
