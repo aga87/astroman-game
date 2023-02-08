@@ -1,0 +1,13 @@
+@import '../../scss//variables/typography.module.scss';
+
+.star {
+  display: inline-block;
+
+  height: 1rem * $blh;
+  width: 1rem * $blh;
+
+  &--large {
+    height: 1.5rem * $blh;
+    width: 1.5rem * $blh;
+  }
+}

@@ -1,7 +1,9 @@
 import React from 'react';
 import { useAppSelector } from '../../redux/typed-hooks';
 import { selectRoom } from '../../redux/reducers';
-import { CreateRoom, JoinRoom, LeaveRoom, Room } from './components';
+import { CreateRoom, JoinRoom, LeaveRoom } from './components';
+
+import styles from './rooms.module.scss';
 
 type RoomProps = {
   title: string;
@@ -12,15 +14,21 @@ export const Rooms = ({ children, title }: RoomProps) => {
   const room = useAppSelector(selectRoom);
 
   return room ? (
-    <Room>
-      <LeaveRoom />
+    <div>
+      <div className={styles.roomInfo}>
+        <p className={styles.roomInfo__text}>Room {room}</p>
+        <LeaveRoom />
+      </div>
       {children}
-    </Room>
+    </div>
   ) : (
-    <>
-      <h1>{title}</h1>
-      <CreateRoom />
+    <div className={styles.rooms}>
+      <h1 className={styles.rooms__heading}>{title}</h1>
+      <div className={styles.rooms__create}>
+        <CreateRoom />
+      </div>
+      <p className={styles.rooms__text}>OR</p>
       <JoinRoom />
-    </>
+    </div>
   );
 };

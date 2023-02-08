@@ -1,0 +1,10 @@
+@import '../../../../scss/helpers/modular-typography.module.scss';
+
+.points {
+  @include h4;
+
+  &__star {
+    vertical-align: middle;
+    margin-left: 5px;
+  }
+}

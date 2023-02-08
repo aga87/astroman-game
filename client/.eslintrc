@@ -18,6 +18,9 @@
         "namedComponents": "arrow-function"
       }
     ],
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
+    "jsx-a11y/media-has-caption": "off",
     // Note: you will also need to manually disable the related @typescript-eslint/no-explicit-any rule for that line with
     // /* eslint-disable  @typescript-eslint/no-explicit-any */
     "@typescript-eslint/ban-ts-comment": [

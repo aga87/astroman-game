@@ -1,0 +1,11 @@
+@import '../../../../scss/helpers/modular-typography.module.scss';
+
+.header {
+  width: 7.5rem;
+  width: min-content;
+  text-align: center;
+  
+  &__heading {
+    @include h5;
+  }
+}

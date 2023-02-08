@@ -1,1 +1,2 @@
-export * from '../features/rooms/Rooms';
+export * from './game/Game';
+export * from './rooms/Rooms';

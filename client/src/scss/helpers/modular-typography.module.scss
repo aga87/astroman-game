@@ -1,0 +1,13 @@
+@import '../variables//typography.module.scss';
+
+@mixin h4() {
+  $h4: 1rem * ($type-scale * $type-scale);
+  font-size: $h4;
+  line-height: ceil(calc($h4 / $blh)) * calc($blh / $h4);
+}
+
+@mixin h5() {
+  $h5: 1rem * $type-scale;
+  font-size: $h5;
+  line-height: ceil(calc($h5 / $blh)) * calc($blh / $h5);
+}
