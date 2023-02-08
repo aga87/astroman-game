@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useAppDispatch } from '../../../../../redux/typed-hooks';
 import { closeGameOptionsModal } from '../../../redux/reducers/gameUI';
+import { resetGame } from '../../../redux/reducers/game';
 import { leaveRoom } from '../../../../rooms/redux/reducers/room';
 import { Modal } from '../Modal';
 import { Button } from '../../../../../components';
@@ -17,12 +18,12 @@ export const GameOptionsModal = () => {
 
   const handleResetGameClick = () => {
     handleClick();
-    // dispatch(resetGame());
+    dispatch(resetGame());
   };
 
   const handleQuitGameClick = () => {
     handleClick();
-    // dispatch(quitGame());
+    dispatch(resetGame());
     dispatch(leaveRoom());
   };
 

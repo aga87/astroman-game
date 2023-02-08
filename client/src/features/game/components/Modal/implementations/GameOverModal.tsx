@@ -3,6 +3,7 @@ import {
   useAppDispatch,
   useAppSelector
 } from '../../../../../redux/typed-hooks';
+import { resetGame } from '../../../redux/reducers/game';
 import { leaveRoom } from '../../../../rooms/redux/reducers/room';
 import { selectWinner } from '../../../../../redux/reducers';
 import { Modal } from '../Modal';
@@ -21,12 +22,12 @@ export const GameOverModal = () => {
 
   const handlePlayAgainClick = () => {
     handleClick();
-    // dispatch(resetGame());
+    dispatch(resetGame());
   };
 
   const handleQuitGameClick = () => {
     handleClick();
-    // dispatch(resetGame());
+    dispatch(resetGame());
     dispatch(leaveRoom());
   };
 

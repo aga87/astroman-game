@@ -122,13 +122,16 @@ const gameSlice = createSlice({
         isNextTurnPL1: !state.isNextTurnPL1,
         isPassAllowed: false
       };
+    },
+    resetGame() {
+      return initialState;
     }
   }
 });
 
 export default gameSlice.reducer;
 
-export const { startLevel, makeMove, passTurn } = gameSlice.actions;
+export const { startLevel, makeMove, passTurn, resetGame } = gameSlice.actions;
 
 // Selectors
 export const selectAvailLetters = (state: State): Letter[] =>
