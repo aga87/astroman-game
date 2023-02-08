@@ -115,13 +115,20 @@ const gameSlice = createSlice({
         isPassAllowed: false,
         availLetters
       };
+    },
+    passTurn(state) {
+      return {
+        ...state,
+        isNextTurnPL1: !state.isNextTurnPL1,
+        isPassAllowed: false
+      };
     }
   }
 });
 
 export default gameSlice.reducer;
 
-export const { startLevel, makeMove } = gameSlice.actions;
+export const { startLevel, makeMove, passTurn } = gameSlice.actions;
 
 // Selectors
 export const selectAvailLetters = (state: State): Letter[] =>
