@@ -3,12 +3,13 @@ import {
   alphabet,
   getUniqueLetterCount,
   toCharacterArr,
-  toUnderscores
+  toUnderscores,
+  updateRoundProgress
 } from '../../utils';
 
 const initialState = {
   bookKey: [] as Character[],
-  roundProgress: [] as ('_' | ' ')[],
+  roundProgress: [] as ('_' | Character)[],
   uniqueLetterCount: 0,
   availLetters: [] as Letter[],
   isNextTurnPL1: true,
@@ -41,13 +42,86 @@ const gameSlice = createSlice({
         uniqueLetterCount,
         availLetters: alphabet
       };
+    },
+    makeMove(state, action: PayloadAction<Letter>) {
+      const guess = action.payload.toUpperCase() as Letter;
+      const isGuessCorrect = state.bookKey.includes(guess);
+      const availLetters = state.availLetters.filter(
+        letter => letter !== guess
+      );
+
+      if (isGuessCorrect) {
+        const roundProgress = updateRoundProgress({
+          roundProgress: state.roundProgress,
+          key: state.bookKey,
+          guess
+        });
+        const uniqueLetterCount = state.uniqueLetterCount - 1;
+
+        if (state.uniqueLetterCount > 1)
+          return {
+            ...state,
+            roundProgress,
+            uniqueLetterCount,
+            isPassAllowed: true,
+            availLetters
+          };
+
+        // If uncovering the last letter...
+
+        const pointsPL1 = state.isNextTurnPL1
+          ? state.pointsPL1 + 1
+          : state.pointsPL1;
+
+        const pointsPL2 = state.isNextTurnPL1
+          ? state.pointsPL2
+          : state.pointsPL2 + 1;
+
+        return {
+          ...state,
+          roundProgress,
+          pointsPL1,
+          pointsPL2,
+          uniqueLetterCount,
+          isPassAllowed: false,
+          availLetters: [],
+          level: state.level + 1
+        };
+      }
+
+      // IF GUESS IS WRONG
+      if (
+        // if one of the players has no chances left and it's their turn: game over
+        (state.isNextTurnPL1 && state.chancesPL1 === 0) ||
+        (!state.isNextTurnPL1 && state.chancesPL2 === 0)
+      )
+        return {
+          ...state,
+          isGameOver: true
+        };
+
+      const chancesPL1 = state.isNextTurnPL1
+        ? state.chancesPL1 - 1
+        : state.chancesPL1;
+      const chancesPL2 = state.isNextTurnPL1
+        ? state.chancesPL2
+        : state.chancesPL2 - 1;
+
+      return {
+        ...state,
+        isNextTurnPL1: !state.isNextTurnPL1,
+        chancesPL1,
+        chancesPL2,
+        isPassAllowed: false,
+        availLetters
+      };
     }
   }
 });
 
 export default gameSlice.reducer;
 
-export const { startLevel } = gameSlice.actions;
+export const { startLevel, makeMove } = gameSlice.actions;
 
 // Selectors
 export const selectAvailLetters = (state: State): Letter[] =>

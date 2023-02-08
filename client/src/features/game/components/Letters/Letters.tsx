@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
-import { useAppSelector } from '../../../../redux/typed-hooks';
+import { useAppDispatch, useAppSelector } from '../../../../redux/typed-hooks';
 import { selectAvailLetters } from '../../../../redux/reducers';
+import { makeMove } from '../../redux/reducers/game';
 import { Button } from '../../../../components';
 import { alphabet } from '../../utils';
 import guessSound from './guess.mp3';
@@ -9,6 +10,7 @@ import styles from './letters.module.scss';
 export const Letters = () => {
   const availableLetters = useAppSelector(selectAvailLetters);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const dispatch = useAppDispatch();
 
   const letterListItems = alphabet.map(letter => {
     const isDisabled = !availableLetters.includes(
@@ -16,7 +18,7 @@ export const Letters = () => {
     );
 
     const handleClick = () => {
-      // dispatch(makeMove(letter.toLowerCase();));
+      dispatch(makeMove(letter.toLowerCase() as Letter));
       const audio = audioRef.current;
       audio?.play();
     };
