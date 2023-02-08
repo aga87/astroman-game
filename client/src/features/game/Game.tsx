@@ -1,8 +1,12 @@
 import React from 'react';
 import { useAppSelector } from '../../redux/typed-hooks';
-import { selectIsGameOptionsModalOpen } from '../../redux/reducers';
+import {
+  selectIsGameOptionsModalOpen,
+  selectIsGameOver
+} from '../../redux/reducers';
 import {
   GameOptionsModal,
+  GameOverModal,
   Header,
   Letters,
   Level,
@@ -19,10 +23,12 @@ import styles from './game.module.scss';
 
 export const Game = () => {
   const isGameOptionsModalOpen = useAppSelector(selectIsGameOptionsModalOpen);
+  const isGameOver = useAppSelector(selectIsGameOver);
 
   return (
     <>
       {isGameOptionsModalOpen && <GameOptionsModal />}
+      {isGameOver && <GameOverModal />}
       <div className={styles.game}>
         <div className={styles.game__header}>
           <Header>

@@ -1,13 +1,17 @@
 import React, { useRef } from 'react';
-import { useAppDispatch } from '../../../../../redux/typed-hooks';
-import { closeGameOptionsModal } from '../../../redux/reducers/gameUI';
+import {
+  useAppDispatch,
+  useAppSelector
+} from '../../../../../redux/typed-hooks';
 import { leaveRoom } from '../../../../rooms/redux/reducers/room';
+import { selectWinner } from '../../../../../redux/reducers';
 import { Modal } from '../Modal';
 import { Button } from '../../../../../components';
 import menuSound from '../../../audio/menu.mp3';
 
-export const GameOptionsModal = () => {
+export const GameOverModal = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const winner = useAppSelector(selectWinner);
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
@@ -15,35 +19,30 @@ export const GameOptionsModal = () => {
     audio?.play();
   };
 
-  const handleResetGameClick = () => {
+  const handlePlayAgainClick = () => {
     handleClick();
     // dispatch(resetGame());
   };
 
   const handleQuitGameClick = () => {
     handleClick();
-    // dispatch(quitGame());
+    // dispatch(resetGame());
     dispatch(leaveRoom());
   };
 
-  const handleBackClick = () => {
-    handleClick();
-    dispatch(closeGameOptionsModal());
-  };
-
   return (
-    <Modal title='OPTIONS'>
+    <Modal title='GAME OVER'>
+      <p>{winner}</p>
       <Button
         variant='tertiary'
-        text='Reset Game'
-        handleClick={handleResetGameClick}
+        text='Play Again'
+        handleClick={handlePlayAgainClick}
       />
       <Button
         variant='tertiary'
         text='Quit Game'
         handleClick={handleQuitGameClick}
       />
-      <Button variant='tertiary' text='Back' handleClick={handleBackClick} />
       <audio src={menuSound} ref={audioRef} />
     </Modal>
   );

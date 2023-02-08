@@ -34,6 +34,8 @@ export const selectChancesPL1 = (state: RootState): number =>
   fromGame.selectChancesPL1(state.gameReducer);
 export const selectChancesPL2 = (state: RootState): number =>
   fromGame.selectChancesPL2(state.gameReducer);
+export const selectIsGameOver = (state: RootState): boolean =>
+  fromGame.selectIsGameOver(state.gameReducer);
 export const selectIsNextTurnPL1 = (state: RootState): boolean =>
   fromGame.selectIsNextTurnPL1(state.gameReducer);
 export const selectIsPassAllowed = (state: RootState): boolean =>
@@ -48,3 +50,5 @@ export const selectPointsPL2 = (state: RootState): number =>
   fromGame.selectPointsPL2(state.gameReducer);
 export const selectRoundProgress = (state: RootState): string =>
   fromGame.selectRoundProgress(state.gameReducer);
+export const selectWinner = (state: RootState): string =>
+  fromGame.selectWinner(state.gameReducer);

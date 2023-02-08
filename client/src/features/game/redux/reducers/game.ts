@@ -128,6 +128,7 @@ export const selectAvailLetters = (state: State): Letter[] =>
   state.availLetters.map(letter => letter.toLowerCase() as Letter);
 export const selectChancesPL1 = (state: State): number => state.chancesPL1;
 export const selectChancesPL2 = (state: State): number => state.chancesPL2;
+export const selectIsGameOver = (state: State): boolean => state.isGameOver;
 export const selectIsNextTurnPL1 = (state: State): boolean =>
   state.isNextTurnPL1;
 export const selectIsPassAllowed = (state: State): boolean =>
@@ -139,3 +140,10 @@ export const selectPointsPL1 = (state: State): number => state.pointsPL1;
 export const selectPointsPL2 = (state: State): number => state.pointsPL2;
 export const selectRoundProgress = (state: State): string =>
   state.roundProgress.join('');
+export const selectWinner = (state: State): string => {
+  if (!state.isGameOver) return '';
+  if (state.pointsPL1 > state.pointsPL2) return 'Player 1 wins';
+  if (state.pointsPL1 < state.pointsPL2) return 'Player 2 wins';
+  if (state.chancesPL1 > state.chancesPL2) return 'Player 1 wins';
+  return 'Player 2 wins';
+};
