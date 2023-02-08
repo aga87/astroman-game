@@ -1,0 +1,26 @@
+@import '../../scss/variables/colors.module.scss';
+@import '../../scss/helpers/visually-hidden.module.scss';
+
+.label {
+  @include visually-hidden();
+}
+
+.textInput {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: $white;
+  background-color: $blue-charcoal;
+  padding: 0.2em 0.5em;
+  border: 0.2em solid $heather;
+  border-radius: 10px;
+
+  &::placeholder {
+    color: $heather;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $burnt-orange;
+  }
+}

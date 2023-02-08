@@ -3,6 +3,7 @@ import { useAppSelector, useAppDispatch } from '../../../../redux/typed-hooks';
 import { selectSocket } from '../../../../redux/reducers';
 import { joinRoom } from '../../redux/reducers/room';
 import { Button, TextInput, useTextInput } from '../../../../components';
+import styles from './joinRoom.module.scss';
 
 export const JoinRoom = () => {
   const socket = useAppSelector(selectSocket);
@@ -25,11 +26,13 @@ export const JoinRoom = () => {
 
   return (
     <>
-      <TextInput
-        value={joinRoomCode.value}
-        placeholder='Enter room code'
-        handleChange={joinRoomCode.handleChange}
-      />
+      <div className={styles.inputContainer}>
+        <TextInput
+          value={joinRoomCode.value}
+          placeholder='Enter room code'
+          handleChange={joinRoomCode.handleChange}
+        />
+      </div>
       <Button
         variant='primary'
         text='Join Game'

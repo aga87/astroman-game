@@ -1,7 +1,28 @@
+@import './../../scss/variables/colors.module.scss';
+@import './../../scss/variables/typography.module.scss';
+
 .roomInfo {
   position: fixed;
   top: 0;
   right: 0;
   width: 7.5rem;
   text-align: center;
+}
+
+.rooms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  &__heading {
+    color: $yellow;
+    margin-bottom: $blh * 1rem;
+  }
+
+  &__create,
+  &__text {
+    margin-bottom: $blh * 1rem;
+  }
 }

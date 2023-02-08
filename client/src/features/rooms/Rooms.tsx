@@ -22,10 +22,13 @@ export const Rooms = ({ children, title }: RoomProps) => {
       {children}
     </div>
   ) : (
-    <>
-      <h1>{title}</h1>
-      <CreateRoom />
+    <div className={styles.rooms}>
+      <h1 className={styles.rooms__heading}>{title}</h1>
+      <div className={styles.rooms__create}>
+        <CreateRoom />
+      </div>
+      <p className={styles.rooms__text}>OR</p>
       <JoinRoom />
-    </>
+    </div>
   );
 };

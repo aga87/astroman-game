@@ -8,7 +8,7 @@ type HeaderProps = {
 export const Header = ({ children }: HeaderProps) => {
   return (
     <header className={styles.header}>
-      <h1 className={styles.header__heading}>Astroman </h1>
+      <h1 className={styles.header__heading}>Astroman</h1>
       {children}
     </header>
   );

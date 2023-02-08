@@ -21,8 +21,9 @@
     line-height: inherit;
     color: $white;
   
-    &:focus {
+    &:hover, &:focus {
       outline: none;
+      border-color: $yellow;
     }
   
     &:disabled {
