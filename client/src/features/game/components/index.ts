@@ -1,4 +1,4 @@
-export * from './GameOptionsModal/GameOptionsModal';
+export * from './Modal/implementations/GameOptionsModal';
 export * from './Header/Header';
 export * from './Letters/Letters';
 export * from './Level/Level';
@@ -8,7 +8,5 @@ export * from './Player1Points/Player1Points';
 export * from './Player2Points/Player2Points';
 export * from './PlayerCanvas/Player1Canvas/Player1Canvas';
 export * from './PlayerCanvas/Player2Canvas/Player2Canvas';
-export * from './QuitBtn/QuitBtn';
-export * from './ResetBtn/ResetBtn';
 export * from './RoundProgress/RoundProgress';
 export * from './StartBtn/StartBtn';

@@ -12,24 +12,17 @@ import {
   Player2Canvas,
   Player1Points,
   Player2Points,
-  QuitBtn,
-  ResetBtn,
   RoundProgress,
   StartBtn
 } from './components';
 import styles from './game.module.scss';
 
 export const Game = () => {
-  const IsGameOptionsModalOpen = useAppSelector(selectIsGameOptionsModalOpen);
+  const isGameOptionsModalOpen = useAppSelector(selectIsGameOptionsModalOpen);
 
   return (
     <>
-      {IsGameOptionsModalOpen && (
-        <GameOptionsModal>
-          <ResetBtn />
-          <QuitBtn />
-        </GameOptionsModal>
-      )}
+      {isGameOptionsModalOpen && <GameOptionsModal />}
       <div className={styles.game}>
         <div className={styles.game__header}>
           <Header>
