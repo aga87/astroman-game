@@ -1,10 +1,11 @@
 import React, { useRef } from 'react';
+import { useAppSelector } from '../../../../redux/typed-hooks';
+import { selectIsPassAllowed } from '../../../../redux/reducers';
 import { Button } from '../../../../components';
 import passSound from './pass.mp3';
 
 export const PassBtn = () => {
-  // const isDisabled = !useAppSelector(selectIsPassAllowed);
-  const isDisabled = false;
+  const isDisabled = !useAppSelector(selectIsPassAllowed);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const handleClick = () => {

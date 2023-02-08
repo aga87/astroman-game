@@ -1,17 +1,19 @@
 import React, { useRef } from 'react';
+import { useAppSelector } from '../../../../redux/typed-hooks';
+import { selectAvailLetters } from '../../../../redux/reducers';
 import { Button } from '../../../../components';
-import { alphabet } from './alphabet';
+import { alphabet } from '../../utils';
 import guessSound from './guess.mp3';
 import styles from './letters.module.scss';
 
 export const Letters = () => {
-  //   const availableLetters = useAppSelector(selectAvailableLetters);
-  const availableLetters = ['a', 'c', 'h'];
-
+  const availableLetters = useAppSelector(selectAvailLetters);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const letterListItems = alphabet.map(letter => {
-    const isDisabled = !availableLetters.includes(letter.toLowerCase());
+    const isDisabled = !availableLetters.includes(
+      letter.toLowerCase() as Letter
+    );
 
     const handleClick = () => {
       // dispatch(makeMove(letter.toLowerCase();));
