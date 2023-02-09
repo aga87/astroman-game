@@ -1,11 +1,11 @@
-import React from 'react';
-import { useAppSelector, useAppDispatch } from '../../../../redux/typed-hooks';
-import { selectSocket } from '../../../../redux/reducers';
+import React, { useContext } from 'react';
+import { SocketContext } from '../../../../context/SocketContext';
+import { useAppDispatch } from '../../../../redux/typed-hooks';
 import { joinRoom } from '../../redux/reducers/room';
 import { Button } from '../../../../components';
 
 export const CreateRoom = () => {
-  const socket = useAppSelector(selectSocket);
+  const socket = useContext(SocketContext);
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
@@ -14,7 +14,7 @@ export const CreateRoom = () => {
       .substring(2, 5)
       .toUpperCase();
 
-    socket.emit('create_room', newRoomName);
+    socket?.emit('create_room', newRoomName);
 
     dispatch(joinRoom(newRoomName));
   };

@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { useAppSelector, useAppDispatch } from '../../../../redux/typed-hooks';
-import { selectSocket } from '../../../../redux/reducers';
+import React, { useContext, useState } from 'react';
+import { SocketContext } from '../../../../context/SocketContext';
+import { useAppDispatch } from '../../../../redux/typed-hooks';
 import { joinRoom } from '../../redux/reducers/room';
 import { Button, TextInput, useTextInput } from '../../../../components';
 import styles from './joinRoom.module.scss';
 
 export const JoinRoom = () => {
-  const socket = useAppSelector(selectSocket);
+  const socket = useContext(SocketContext);
   const dispatch = useAppDispatch();
   const joinRoomCode = useTextInput('');
   const [error, setError] = useState('');
 
   const handleJoinGameClick = () => {
-    socket.emit('join_room', joinRoomCode.value);
+    socket?.emit('join_room', joinRoomCode.value);
 
-    socket.on('join_room_error', joinError => {
+    socket?.on('join_room_error', joinError => {
       setError(joinError);
     });
 
-    socket.on('join_room_success', () => {
+    socket?.on('join_room_success', () => {
       setError('');
       dispatch(joinRoom(joinRoomCode.value));
     });
