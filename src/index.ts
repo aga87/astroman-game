@@ -13,8 +13,15 @@ app.get('/', (req: Request, res: Response) => {
 
 const httpServer = createServer(app);
 
+const origin =
+  process.env.NODE_ENV === 'production'
+    ? process.env.CORS_ORIGIN_PROD
+    : process.env.CORS_ORIGIN_DEV;
+
 const io = new Server(httpServer, {
-  /* options */
+  cors: {
+    origin: origin || 'http://localhost:3000'
+  }
 });
 
 io.on('connection', socket => {
