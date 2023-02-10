@@ -23,6 +23,7 @@ export const joinRoom = (socket: Socket, io: Server) => {
     } else {
       socket.join(roomName);
       socket.emit('join_room_success');
+      io.in(roomName).emit('player_joined', room.size);
     }
   });
 };
@@ -35,6 +36,7 @@ export const leaveRoom = (socket: Socket, io: Server) => {
     } else {
       socket.leave(roomName);
       socket.emit('leave_room_success');
+      io.in(roomName).emit('player_left', room.size);
     }
   });
 };

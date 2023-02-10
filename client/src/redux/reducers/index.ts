@@ -15,6 +15,8 @@ export default combineReducers({
 // Room
 export const selectRoom = (state: RootState): null | string =>
   fromRoom.selectRoom(state.roomReducer);
+export const selectRoomSize = (state: RootState): number =>
+  fromRoom.selectRoomSize(state.roomReducer);
 
 // GameUI
 export const selectIsGameOptionsModalOpen = (state: RootState): boolean =>

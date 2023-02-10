@@ -2,7 +2,8 @@ import React from 'react';
 import { useAppSelector } from '../../redux/typed-hooks';
 import {
   selectIsGameOptionsModalOpen,
-  selectIsGameOver
+  selectIsGameOver,
+  selectRoomSize
 } from '../../redux/reducers';
 import {
   GameOptionsModal,
@@ -24,6 +25,7 @@ import styles from './game.module.scss';
 export const Game = () => {
   const isGameOptionsModalOpen = useAppSelector(selectIsGameOptionsModalOpen);
   const isGameOver = useAppSelector(selectIsGameOver);
+  const roomSize = useAppSelector(selectRoomSize);
 
   return (
     <>
@@ -36,11 +38,17 @@ export const Game = () => {
           </Header>
         </div>
         <div className={styles.game__level}>
-          <Level />
-          <StartBtn />
+          {roomSize === 1 ? (
+            'Waiting for the second player to join...'
+          ) : (
+            <>
+              <Level />
+              <StartBtn />
+            </>
+          )}
         </div>
         <div className={styles.game__roundProgress}>
-          <RoundProgress />
+          {roomSize === 2 && <RoundProgress />}
         </div>
         <div className={styles.game__letters}>
           <Letters />
@@ -53,9 +61,11 @@ export const Game = () => {
           </Player1Canvas>
         </div>
         <div className={styles.game__player2}>
-          <Player2Canvas>
-            <Player2Points />
-          </Player2Canvas>
+          {roomSize === 2 && (
+            <Player2Canvas>
+              <Player2Points />
+            </Player2Canvas>
+          )}
         </div>
       </div>
     </>
