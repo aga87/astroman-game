@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SocketContext } from '../../../../context/SocketContext';
 import { useAppSelector, useAppDispatch } from '../../../../redux/typed-hooks';
 import { selectRoom } from '../../../../redux/reducers';
@@ -12,8 +12,17 @@ export const LeaveRoom = () => {
 
   const handleLeaveRoomClick = () => {
     socket?.emit('leave_room', room);
-    dispatch(leaveRoom());
   };
+
+  useEffect(() => {
+    socket?.on('leave_room_success', () => {
+      dispatch(leaveRoom());
+    });
+
+    return () => {
+      socket?.off('leave_room_success');
+    };
+  }, [dispatch, socket]);
 
   return (
     <Button

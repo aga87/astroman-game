@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SocketContext } from '../../../../context/SocketContext';
 import { useAppDispatch } from '../../../../redux/typed-hooks';
-import { joinRoom } from '../../redux/reducers/room';
+import { createRoom } from '../../redux/reducers/room';
 import { Button } from '../../../../components';
 
 export const CreateRoom = () => {
   const socket = useContext(SocketContext);
+  const [roomName, setRoomName] = useState('');
+  const [error, setError] = useState('');
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
@@ -15,15 +17,33 @@ export const CreateRoom = () => {
       .toUpperCase();
 
     socket?.emit('create_room', newRoomName);
-
-    dispatch(joinRoom(newRoomName));
+    setRoomName(newRoomName);
   };
 
+  useEffect(() => {
+    socket?.on('create_room_error', err => {
+      setError(err);
+    });
+
+    socket?.on('create_room_success', () => {
+      setError('');
+      dispatch(createRoom(roomName));
+    });
+
+    return () => {
+      socket?.off('create_room_error');
+      socket?.off('create_room_success');
+    };
+  }, [dispatch, socket, roomName]);
+
   return (
-    <Button
-      variant='primary'
-      text='Create New Game'
-      handleClick={handleClick}
-    />
+    <>
+      <Button
+        variant='primary'
+        text='Create New Game'
+        handleClick={handleClick}
+      />
+      {error && <p>Error: {error}</p>}
+    </>
   );
 };

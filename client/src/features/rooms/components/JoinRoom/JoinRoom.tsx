@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SocketContext } from '../../../../context/SocketContext';
 import { useAppDispatch } from '../../../../redux/typed-hooks';
 import { joinRoom } from '../../redux/reducers/room';
@@ -12,23 +12,30 @@ export const JoinRoom = () => {
   const [error, setError] = useState('');
 
   const handleJoinGameClick = () => {
-    socket?.emit('join_room', joinRoomCode.value);
+    socket?.emit('join_room', joinRoomCode.value.trim());
+  };
 
+  useEffect(() => {
     socket?.on('join_room_error', joinError => {
       setError(joinError);
     });
 
     socket?.on('join_room_success', () => {
       setError('');
-      dispatch(joinRoom(joinRoomCode.value));
+      dispatch(joinRoom(joinRoomCode.value.trim()));
     });
-  };
+
+    return () => {
+      socket?.off('join_room_error');
+      socket?.off('join_room_success');
+    };
+  }, [dispatch, socket, joinRoomCode.value]);
 
   return (
     <>
       <div className={styles.inputContainer}>
         <TextInput
-          value={joinRoomCode.value}
+          value={joinRoomCode.value.trim()}
           placeholder='Enter room code'
           handleChange={joinRoomCode.handleChange}
         />

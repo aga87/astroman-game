@@ -10,6 +10,13 @@ const roomSlice = createSlice({
   name: 'room',
   initialState,
   reducers: {
+    createRoom(state, action: PayloadAction<string>) {
+      const room = action.payload;
+      return {
+        ...state,
+        room
+      };
+    },
     joinRoom(state, action: PayloadAction<string>) {
       const room = action.payload;
       return {
@@ -17,18 +24,15 @@ const roomSlice = createSlice({
         room
       };
     },
-    leaveRoom(state) {
-      return {
-        ...state,
-        room: null
-      };
+    leaveRoom() {
+      return initialState;
     }
   }
 });
 
 export default roomSlice.reducer;
 
-export const { joinRoom, leaveRoom } = roomSlice.actions;
+export const { createRoom, joinRoom, leaveRoom } = roomSlice.actions;
 
 // Selectors
 export const selectRoom = (state: State): null | string => state.room;
