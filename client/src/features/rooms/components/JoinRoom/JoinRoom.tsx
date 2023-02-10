@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { SocketContext } from '../../../../context/SocketContext';
 import { useAppDispatch } from '../../../../redux/typed-hooks';
 import { joinRoom } from '../../redux/reducers/room';
+import { setPlayer1 } from '../../../game/redux/reducers/game';
 import { Button, TextInput, useTextInput } from '../../../../components';
 import styles from './joinRoom.module.scss';
 
@@ -23,6 +24,7 @@ export const JoinRoom = () => {
     socket?.on('join_room_success', () => {
       setError('');
       dispatch(joinRoom(joinRoomCode.value.trim()));
+      dispatch(setPlayer1(false));
     });
 
     return () => {

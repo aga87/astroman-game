@@ -3,6 +3,7 @@ import { SocketContext } from '../../context/SocketContext';
 import { useAppDispatch, useAppSelector } from '../../redux/typed-hooks';
 import { selectRoom } from '../../redux/reducers';
 import { updateRoomSize } from './redux/reducers/room';
+import { setPlayer1 } from '../game/redux/reducers/game';
 import { CreateRoom, JoinRoom, LeaveRoom } from './components';
 import styles from './rooms.module.scss';
 
@@ -23,6 +24,7 @@ export const Rooms = ({ children, title }: RoomProps) => {
 
     socket?.on('player_left', (roomSize: number) => {
       dispatch(updateRoomSize(roomSize));
+      dispatch(setPlayer1(true));
     });
 
     return () => {

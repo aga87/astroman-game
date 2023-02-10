@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { SocketContext } from '../../../../context/SocketContext';
 import { useAppDispatch } from '../../../../redux/typed-hooks';
 import { createRoom } from '../../redux/reducers/room';
+import { setPlayer1 } from '../../../game/redux/reducers/game';
 import { Button } from '../../../../components';
 
 export const CreateRoom = () => {
@@ -28,6 +29,7 @@ export const CreateRoom = () => {
     socket?.on('create_room_success', () => {
       setError('');
       dispatch(createRoom(roomName));
+      dispatch(setPlayer1(true));
     });
 
     return () => {
