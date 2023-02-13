@@ -9,7 +9,7 @@
     "server": "nodemon src/index.ts",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "tsc -p .",
+    "build": "tsc -p ./src/tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Aga",
