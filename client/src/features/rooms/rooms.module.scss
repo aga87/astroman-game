@@ -2,11 +2,12 @@
 @import './../../scss/variables/typography.module.scss';
 
 .roomInfo {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   width: 7.5rem;
   text-align: center;
+  z-index: 3;
 }
 
 .rooms {
