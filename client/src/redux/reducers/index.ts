@@ -35,6 +35,8 @@ export const selectIsNextTurnPL1 = (state: RootState): boolean =>
   fromGame.selectIsNextTurnPL1(state.gameReducer);
 export const selectIsPassAllowed = (state: RootState): boolean =>
   fromGame.selectIsPassAllowed(state.gameReducer);
+export const selectIsPL1 = (state: RootState): boolean =>
+  fromGame.selectIsPL1(state.gameReducer);
 export const selectIsRoundOver = (state: RootState): boolean =>
   fromGame.selectIsRoundOver(state.gameReducer);
 export const selectLevel = (state: RootState): number =>

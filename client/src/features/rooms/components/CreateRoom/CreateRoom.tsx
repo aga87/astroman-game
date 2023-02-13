@@ -29,7 +29,7 @@ export const CreateRoom = () => {
     socket?.on('create_room_success', () => {
       setError('');
       dispatch(createRoom(roomName));
-      dispatch(setPlayer1(true));
+      dispatch(setPlayer1());
     });
 
     return () => {

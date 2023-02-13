@@ -3,7 +3,6 @@ import { SocketContext } from '../../../../context/SocketContext';
 import { useAppSelector, useAppDispatch } from '../../../../redux/typed-hooks';
 import { selectRoom } from '../../../../redux/reducers';
 import { leaveRoom } from '../../redux/reducers/room';
-import { setPlayer1 } from '../../../game/redux/reducers/game';
 import { Button } from '../../../../components';
 
 export const LeaveRoom = () => {
@@ -18,7 +17,6 @@ export const LeaveRoom = () => {
   useEffect(() => {
     socket?.on('leave_room_success', () => {
       dispatch(leaveRoom());
-      dispatch(setPlayer1(false));
     });
 
     return () => {

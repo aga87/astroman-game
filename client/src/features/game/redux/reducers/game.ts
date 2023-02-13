@@ -29,10 +29,10 @@ const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
-    setPlayer1(state, action: PayloadAction<boolean>) {
+    setPlayer1(state) {
       return {
         ...state,
-        isPL1: action.payload
+        isPL1: true
       };
     },
     startLevel(state, action: PayloadAction<string>) {
@@ -130,8 +130,11 @@ const gameSlice = createSlice({
         isPassAllowed: false
       };
     },
-    resetGame() {
-      return initialState;
+    resetGame(state) {
+      return {
+        ...initialState,
+        isPL1: state.isPL1
+      };
     }
   }
 });
@@ -151,6 +154,7 @@ export const selectIsNextTurnPL1 = (state: State): boolean =>
   state.isNextTurnPL1;
 export const selectIsPassAllowed = (state: State): boolean =>
   state.isPassAllowed;
+export const selectIsPL1 = (state: State): boolean => state.isPL1;
 export const selectIsRoundOver = (state: State): boolean =>
   state.uniqueLetterCount === 0;
 export const selectLevel = (state: State): number => state.level;
