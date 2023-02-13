@@ -8,11 +8,12 @@ import {
 } from '../../utils';
 
 const initialState = {
+  isPL1: false,
+  isNextTurnPL1: true,
   bookKey: [] as Character[],
   roundProgress: [] as ('_' | Character)[],
   uniqueLetterCount: 0,
   availLetters: [] as Letter[],
-  isNextTurnPL1: true,
   isPassAllowed: false,
   pointsPL1: 0,
   pointsPL2: 0,
@@ -28,6 +29,12 @@ const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
+    setPlayer1(state) {
+      return {
+        ...state,
+        isPL1: true
+      };
+    },
     startLevel(state, action: PayloadAction<string>) {
       const randomBook = action.payload;
       // We will compare players' guesses against this array
@@ -123,15 +130,19 @@ const gameSlice = createSlice({
         isPassAllowed: false
       };
     },
-    resetGame() {
-      return initialState;
+    resetGame(state) {
+      return {
+        ...initialState,
+        isPL1: state.isPL1
+      };
     }
   }
 });
 
 export default gameSlice.reducer;
 
-export const { startLevel, makeMove, passTurn, resetGame } = gameSlice.actions;
+export const { setPlayer1, startLevel, makeMove, passTurn, resetGame } =
+  gameSlice.actions;
 
 // Selectors
 export const selectAvailLetters = (state: State): Letter[] =>
@@ -143,6 +154,7 @@ export const selectIsNextTurnPL1 = (state: State): boolean =>
   state.isNextTurnPL1;
 export const selectIsPassAllowed = (state: State): boolean =>
   state.isPassAllowed;
+export const selectIsPL1 = (state: State): boolean => state.isPL1;
 export const selectIsRoundOver = (state: State): boolean =>
   state.uniqueLetterCount === 0;
 export const selectLevel = (state: State): number => state.level;

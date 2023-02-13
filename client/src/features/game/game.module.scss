@@ -16,6 +16,7 @@
   &__header {
     grid-area: header;
     text-align: left;
+    z-index: 2;
   }
 
   &__level {

@@ -9,5 +9,6 @@ export * from './Player1Points/Player1Points';
 export * from './Player2Points/Player2Points';
 export * from './PlayerCanvas/Player1Canvas/Player1Canvas';
 export * from './PlayerCanvas/Player2Canvas/Player2Canvas';
+export * from './PlayerStopper/PlayerStopper';
 export * from './RoundProgress/RoundProgress';
 export * from './StartBtn/StartBtn';

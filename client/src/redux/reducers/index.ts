@@ -1,13 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { Socket } from 'socket.io-client';
-import socketReducer, * as fromSocket from './socket';
 import roomReducer, * as fromRoom from '../../features/rooms/redux/reducers/room';
 import gameReducer, * as fromGame from '../../features/game/redux/reducers/game';
 import gameUIReducer, * as fromGameUI from '../../features/game/redux/reducers/gameUI';
 import type { RootState } from '../store';
 
 export default combineReducers({
-  socketReducer,
   roomReducer,
   gameReducer,
   gameUIReducer
@@ -15,13 +12,11 @@ export default combineReducers({
 
 // SELECTORS
 
-// Socket
-export const selectSocket = (state: RootState): Socket =>
-  fromSocket.selectSocket(state.socketReducer);
-
 // Room
 export const selectRoom = (state: RootState): null | string =>
   fromRoom.selectRoom(state.roomReducer);
+export const selectRoomSize = (state: RootState): number =>
+  fromRoom.selectRoomSize(state.roomReducer);
 
 // GameUI
 export const selectIsGameOptionsModalOpen = (state: RootState): boolean =>
@@ -40,6 +35,8 @@ export const selectIsNextTurnPL1 = (state: RootState): boolean =>
   fromGame.selectIsNextTurnPL1(state.gameReducer);
 export const selectIsPassAllowed = (state: RootState): boolean =>
   fromGame.selectIsPassAllowed(state.gameReducer);
+export const selectIsPL1 = (state: RootState): boolean =>
+  fromGame.selectIsPL1(state.gameReducer);
 export const selectIsRoundOver = (state: RootState): boolean =>
   fromGame.selectIsRoundOver(state.gameReducer);
 export const selectLevel = (state: RootState): number =>

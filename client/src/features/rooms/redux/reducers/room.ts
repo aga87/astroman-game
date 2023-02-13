@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
-  room: null as null | string
+  room: null as null | string,
+  roomSize: 0
 };
 
 type State = typeof initialState;
@@ -10,6 +11,14 @@ const roomSlice = createSlice({
   name: 'room',
   initialState,
   reducers: {
+    createRoom(state, action: PayloadAction<string>) {
+      const room = action.payload;
+      return {
+        ...state,
+        room,
+        roomSize: 1
+      };
+    },
     joinRoom(state, action: PayloadAction<string>) {
       const room = action.payload;
       return {
@@ -17,18 +26,24 @@ const roomSlice = createSlice({
         room
       };
     },
-    leaveRoom(state) {
+    updateRoomSize(state, action: PayloadAction<number>) {
+      const roomSize = action.payload;
       return {
         ...state,
-        room: null
+        roomSize
       };
+    },
+    leaveRoom() {
+      return initialState;
     }
   }
 });
 
 export default roomSlice.reducer;
 
-export const { joinRoom, leaveRoom } = roomSlice.actions;
+export const { createRoom, joinRoom, leaveRoom, updateRoomSize } =
+  roomSlice.actions;
 
 // Selectors
 export const selectRoom = (state: State): null | string => state.room;
+export const selectRoomSize = (state: State): number => state.roomSize;

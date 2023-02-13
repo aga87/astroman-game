@@ -4,13 +4,13 @@
 @import '../../../../scss/helpers/responsive-breakpoints.module.scss';
 
 .modal {
-  display: none;
   // Fixed full screen
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
+  z-index: 4;
   // Center inner modal window horizontally and vertically
   display: flex;
   justify-content: center;

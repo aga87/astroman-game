@@ -10,23 +10,50 @@ const drawFullOxygen = (ctx: CanvasRenderingContext2D) => {
 };
 
 export const drawOxygen = (ctx: CanvasRenderingContext2D, chances: number) => {
-  if (chances === 8) {
-    drawFullOxygen(ctx);
-  } else if (chances === 7) {
+  drawFullOxygen(ctx);
+  if (chances === 7) {
     ctx.clearRect(160, 120, 80, 80);
   } else if (chances === 6) {
+    ctx.clearRect(160, 120, 80, 80);
     ctx.clearRect(160, 200, 80, 80);
   } else if (chances === 5) {
+    ctx.clearRect(160, 120, 80, 80);
+    ctx.clearRect(160, 200, 80, 80);
     ctx.clearRect(160, 280, 80, 80);
   } else if (chances === 4) {
+    ctx.clearRect(160, 120, 80, 80);
+    ctx.clearRect(160, 200, 80, 80);
+    ctx.clearRect(160, 280, 80, 80);
     ctx.clearRect(160, 360, 80, 80);
   } else if (chances === 3) {
+    ctx.clearRect(160, 120, 80, 80);
+    ctx.clearRect(160, 200, 80, 80);
+    ctx.clearRect(160, 280, 80, 80);
+    ctx.clearRect(160, 360, 80, 80);
     ctx.clearRect(40, 120, 80, 80);
   } else if (chances === 2) {
+    ctx.clearRect(160, 120, 80, 80);
+    ctx.clearRect(160, 200, 80, 80);
+    ctx.clearRect(160, 280, 80, 80);
+    ctx.clearRect(160, 360, 80, 80);
+    ctx.clearRect(40, 120, 80, 80);
     ctx.clearRect(40, 200, 80, 80);
   } else if (chances === 1) {
+    ctx.clearRect(160, 120, 80, 80);
+    ctx.clearRect(160, 200, 80, 80);
+    ctx.clearRect(160, 280, 80, 80);
+    ctx.clearRect(160, 360, 80, 80);
+    ctx.clearRect(40, 120, 80, 80);
+    ctx.clearRect(40, 200, 80, 80);
     ctx.clearRect(40, 280, 80, 80);
   } else if (chances === 0) {
+    ctx.clearRect(160, 120, 80, 80);
+    ctx.clearRect(160, 200, 80, 80);
+    ctx.clearRect(160, 280, 80, 80);
+    ctx.clearRect(160, 360, 80, 80);
+    ctx.clearRect(40, 120, 80, 80);
+    ctx.clearRect(40, 200, 80, 80);
+    ctx.clearRect(40, 280, 80, 80);
     ctx.clearRect(40, 360, 80, 80);
   } else {
     drawFullOxygen(ctx);
