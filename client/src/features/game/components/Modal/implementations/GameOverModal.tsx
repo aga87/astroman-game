@@ -1,16 +1,19 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
+import { SocketContext } from '../../../../../context/SocketContext';
 import {
   useAppDispatch,
   useAppSelector
 } from '../../../../../redux/typed-hooks';
 import { resetGame } from '../../../redux/reducers/game';
 import { leaveRoom } from '../../../../rooms/redux/reducers/room';
-import { selectWinner } from '../../../../../redux/reducers';
+import { selectRoom, selectWinner } from '../../../../../redux/reducers';
 import { Modal } from '../Modal';
 import { Button } from '../../../../../components';
 import menuSound from '../../../audio/menu.mp3';
 
 export const GameOverModal = () => {
+  const socket = useContext(SocketContext);
+  const room = useAppSelector(selectRoom);
   const audioRef = useRef<HTMLAudioElement>(null);
   const winner = useAppSelector(selectWinner);
   const dispatch = useAppDispatch();
@@ -23,12 +26,15 @@ export const GameOverModal = () => {
   const handlePlayAgainClick = () => {
     handleClick();
     dispatch(resetGame());
+    socket?.emit('reset_game', room);
   };
 
   const handleQuitGameClick = () => {
     handleClick();
     dispatch(resetGame());
+    socket?.emit('reset_game', room);
     dispatch(leaveRoom());
+    socket?.emit('leave_room', room);
   };
 
   return (

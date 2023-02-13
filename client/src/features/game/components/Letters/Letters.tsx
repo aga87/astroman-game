@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
+import { SocketContext } from '../../../../context/SocketContext';
 import { useAppDispatch, useAppSelector } from '../../../../redux/typed-hooks';
-import { selectAvailLetters } from '../../../../redux/reducers';
+import { selectRoom, selectAvailLetters } from '../../../../redux/reducers';
 import { makeMove } from '../../redux/reducers/game';
 import { Button } from '../../../../components';
 import { alphabet } from '../../utils';
@@ -8,6 +9,8 @@ import guessSound from './guess.mp3';
 import styles from './letters.module.scss';
 
 export const Letters = () => {
+  const socket = useContext(SocketContext);
+  const room = useAppSelector(selectRoom);
   const availableLetters = useAppSelector(selectAvailLetters);
   const audioRef = useRef<HTMLAudioElement>(null);
   const dispatch = useAppDispatch();
@@ -19,6 +22,7 @@ export const Letters = () => {
 
     const handleClick = () => {
       dispatch(makeMove(letter.toLowerCase() as Letter));
+      socket?.emit('make_move', { room, letter: letter.toLowerCase() });
       const audio = audioRef.current;
       audio?.play();
     };

@@ -1,18 +1,23 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
+import { SocketContext } from '../../../../context/SocketContext';
 import { useAppDispatch, useAppSelector } from '../../../../redux/typed-hooks';
-import { selectIsRoundOver } from '../../../../redux/reducers';
+import { selectIsRoundOver, selectRoom } from '../../../../redux/reducers';
 import { startLevel } from '../../redux/reducers/game';
 import { Button } from '../../../../components';
 import startSound from './start.mp3';
 import { getRandomBook } from '../../utils';
 
 export const StartBtn = () => {
+  const socket = useContext(SocketContext);
+  const room = useAppSelector(selectRoom);
   const isDisabled = !useAppSelector(selectIsRoundOver);
   const audioRef = useRef<HTMLAudioElement>(null);
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    dispatch(startLevel(getRandomBook()));
+    const randomBook = getRandomBook();
+    dispatch(startLevel(randomBook));
+    socket?.emit('start_game', { room, randomBook });
     const audio = audioRef.current;
     audio?.play();
   };
