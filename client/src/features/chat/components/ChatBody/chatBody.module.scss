@@ -1,0 +1,29 @@
+@import '../../../../scss/helpers/modular-typography.module.scss';
+
+.chatMessagePL1,
+.chatMessagePL2 {
+  width: 80%;
+  margin-bottom: 10px;
+  &__body {
+    padding: 5px;
+    border-radius: 10px;
+    color: #fff;
+  }
+}
+
+.chatMessagePL1 {
+  margin-right: 0;
+  margin-left: auto;
+  &__sender {
+    text-align: right;
+  }
+  &__body {
+    background-color: #158fe671;
+  }
+}
+
+.chatMessagePL2 {
+  &__body {
+    background-color: #d150004c;
+  }
+}

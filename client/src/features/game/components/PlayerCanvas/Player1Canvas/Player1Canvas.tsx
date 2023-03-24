@@ -45,12 +45,14 @@ export const Player1Canvas = ({ children = null }: Player1CanvasProps) => {
     <div className={styles.playerCanvas}>
       <div className={playerClassName}>Player 1</div>
       <div className={styles.playerCanvas__flex}>
-        <canvas
-          ref={canvasTankRef}
-          width='280'
-          height='480'
-          className={styles.playerCanvas__canvas}
-        />
+        <div>
+          <canvas
+            ref={canvasTankRef}
+            width='280'
+            height='480'
+            className={styles.playerCanvas__canvas}
+          />
+        </div>
         <div>
           <canvas
             ref={canvasHeadRef}

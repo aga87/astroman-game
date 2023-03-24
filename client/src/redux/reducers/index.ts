@@ -1,13 +1,15 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import roomReducer, * as fromRoom from '../../features/rooms/redux/reducers/room';
+import chatUIReducer, * as fromChatUIReducer from '../../features/chat/redux/reducers/chatUI';
 import gameReducer, * as fromGame from '../../features/game/redux/reducers/game';
 import gameUIReducer, * as fromGameUI from '../../features/game/redux/reducers/gameUI';
+import roomReducer, * as fromRoom from '../../features/rooms/redux/reducers/room';
 import type { RootState } from '../store';
 
 export default combineReducers({
   roomReducer,
   gameReducer,
-  gameUIReducer
+  gameUIReducer,
+  chatUIReducer
 });
 
 // SELECTORS
@@ -49,3 +51,7 @@ export const selectRoundProgress = (state: RootState): string =>
   fromGame.selectRoundProgress(state.gameReducer);
 export const selectWinner = (state: RootState): string =>
   fromGame.selectWinner(state.gameReducer);
+
+// Chat UI
+export const selectIsChatOpen = (state: RootState): boolean =>
+  fromChatUIReducer.selectIsChatOpen(state.chatUIReducer);

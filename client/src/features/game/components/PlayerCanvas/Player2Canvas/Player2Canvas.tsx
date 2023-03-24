@@ -54,12 +54,14 @@ export const Player2Canvas = ({ children = null }: Player2CanvasProps) => {
           />
           {children && children}
         </div>
-        <canvas
-          ref={canvasTankRef}
-          width='280'
-          height='480'
-          className={styles.playerCanvas__canvas}
-        />
+        <div>
+          <canvas
+            ref={canvasTankRef}
+            width='280'
+            height='480'
+            className={styles.playerCanvas__canvas}
+          />
+        </div>
       </div>
     </div>
   );
