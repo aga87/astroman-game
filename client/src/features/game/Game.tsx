@@ -23,7 +23,7 @@ import {
   RoundProgress,
   StartBtn
 } from './components';
-import { useGameSocket } from './useGameSocket';
+// import { useGameSocket } from './useGameSocket';
 import styles from './game.module.scss';
 
 export const Game = () => {
@@ -37,7 +37,7 @@ export const Game = () => {
   const isPL1InTheRoom = roomSize === 2 || (roomSize === 1 && isPL1);
   const isPL2InTheRoom = roomSize === 2 || (roomSize === 1 && !isPL1);
 
-  useGameSocket();
+  // useGameSocket();
 
   return (
     <>

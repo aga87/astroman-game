@@ -4,6 +4,7 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import { createRoom, joinRoom, leaveRoom } from './controllers/room';
 import { startGame, makeMove, passTurn, resetGame } from './controllers/game';
+import { sendMessage } from './controllers/chat';
 
 dotenv.config();
 const app: Application = express();
@@ -32,6 +33,8 @@ io.on('connection', socket => {
   makeMove(socket);
   passTurn(socket);
   resetGame(socket);
+  // Chat
+  sendMessage(socket);
 
   socket.on('disconnect', () => {
     console.log('socket disconnected', socket.id);

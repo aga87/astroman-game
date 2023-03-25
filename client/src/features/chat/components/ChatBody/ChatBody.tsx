@@ -1,18 +1,29 @@
 import React from 'react';
+import { useAppSelector } from '../../../../redux/typed-hooks';
+import { selectMessages } from '../../../../redux/reducers';
 import styles from './chatBody.module.scss';
 
 export const ChatBody = () => {
+  const messages = useAppSelector(selectMessages);
+
   return (
     <div>
-      <div className={styles.chatMessagePL1}>
-        <div className={styles.chatMessagePL1__sender}>Player 1</div>
-        <div className={styles.chatMessagePL1__body}>Hey</div>
-      </div>
-
-      <div className={styles.chatMessagePL2}>
-        <div className={styles.chatMessagePL2__sender}>Player 2</div>
-        <div className={styles.chatMessagePL2__body}>Hey, good luck</div>
-      </div>
+      {messages.map(message => {
+        const { body, sender } = message;
+        if (sender === 'Player 1')
+          return (
+            <div className={styles.chatMessagePL1}>
+              <div className={styles.chatMessagePL1__sender}>{sender}</div>
+              <div className={styles.chatMessagePL1__body}>{body}</div>
+            </div>
+          );
+        return (
+          <div className={styles.chatMessagePL2}>
+            <div className={styles.chatMessagePL2__sender}>{sender}</div>
+            <div className={styles.chatMessagePL2__body}>{body}</div>
+          </div>
+        );
+      })}
     </div>
   );
 };

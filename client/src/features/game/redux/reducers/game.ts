@@ -155,6 +155,8 @@ export const selectIsNextTurnPL1 = (state: State): boolean =>
 export const selectIsPassAllowed = (state: State): boolean =>
   state.isPassAllowed;
 export const selectIsPL1 = (state: State): boolean => state.isPL1;
+export const selectPlayer = (state: State): Player =>
+  state.isPL1 ? 'Player 1' : 'Player 2';
 export const selectIsRoundOver = (state: State): boolean =>
   state.uniqueLetterCount === 0;
 export const selectLevel = (state: State): number => state.level;

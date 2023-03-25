@@ -10,7 +10,7 @@ const chatUISlice = createSlice({
   name: 'chatUI',
   initialState,
   reducers: {
-    toggleChat(state) {
+    toggleChat(state: State) {
       return {
         ...state,
         isChatOpen: !state.isChatOpen

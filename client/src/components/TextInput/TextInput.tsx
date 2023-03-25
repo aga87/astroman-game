@@ -5,12 +5,14 @@ type TextInputProps = {
   value: string;
   placeholder: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
 export const TextInput = ({
   value,
   placeholder,
-  handleChange
+  handleChange,
+  handleKeyDown
 }: TextInputProps) => {
   const id = useId();
 
@@ -25,6 +27,7 @@ export const TextInput = ({
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
+        onKeyDown={handleKeyDown && handleKeyDown}
         className={styles.textInput}
       />
     </>
