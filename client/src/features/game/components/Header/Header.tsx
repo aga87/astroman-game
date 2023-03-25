@@ -1,15 +1,15 @@
 import React from 'react';
+import { useAppSelector } from '../../../../redux/typed-hooks';
+import { selectRoom } from '../../../../redux/reducers';
 import styles from './header.module.scss';
 
-type HeaderProps = {
-  children: React.ReactNode;
-};
+export const Header = () => {
+  const room = useAppSelector(selectRoom);
 
-export const Header = ({ children }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <h1 className={styles.header__heading}>Astroman</h1>
-      {children}
+      <div>Room {room}</div>
     </header>
   );
 };

@@ -43,9 +43,8 @@ export const Game = () => {
       {isGameOver && <GameOverModal />}
       <div className={styles.game}>
         <div className={styles.game__header}>
-          <Header>
-            <Menu />
-          </Header>
+          <Header />
+          <Menu />
         </div>
         <div className={styles.game__level}>
           {roomSize === 1 ? (

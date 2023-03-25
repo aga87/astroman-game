@@ -1,0 +1,18 @@
+@import '../../../../scss/variables/colors.module.scss';
+
+.chatToggleButton {
+  width: 80px;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__icon {
+    width: 100%;
+    height: auto;
+  }
+}

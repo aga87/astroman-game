@@ -24,6 +24,7 @@
     &:hover, &:focus {
       outline: none;
       border-color: $yellow;
+      cursor: pointer;
     }
   
     &:disabled {
