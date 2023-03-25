@@ -7,7 +7,7 @@ export const createRoom = (socket: Socket, io: Server) => {
       socket.emit('create_room_error', 'Room already exists');
     } else {
       socket.join(roomName);
-      socket.emit('create_room_success');
+      socket.emit('create_room_success', roomName);
     }
   });
 };
@@ -22,7 +22,7 @@ export const joinRoom = (socket: Socket, io: Server) => {
       socket.emit('join_room_error', 'Room is full');
     } else {
       socket.join(roomName);
-      socket.emit('join_room_success');
+      socket.emit('join_room_success', roomName);
       io.in(roomName).emit('player_joined', room.size);
     }
   });

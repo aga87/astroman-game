@@ -14,14 +14,9 @@ app.get('/', (req: Request, res: Response) => {
 
 const httpServer = createServer(app);
 
-const origin =
-  process.env.NODE_ENV === 'production'
-    ? process.env.CORS_ORIGIN_PROD
-    : process.env.CORS_ORIGIN_DEV;
-
 const io = new Server(httpServer, {
   cors: {
-    origin: origin || 'http://localhost:3000'
+    origin: process.env.CORS_ORIGIN || 'http://localhost:3000'
   }
 });
 
@@ -44,4 +39,6 @@ io.on('connection', socket => {
 });
 
 const { PORT } = process.env;
-httpServer.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
+const port = PORT || 5000;
+
+httpServer.listen(PORT, () => console.log(`Listening on port ${port}...`));

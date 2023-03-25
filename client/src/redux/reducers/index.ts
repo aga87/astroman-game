@@ -17,6 +17,10 @@ export const selectRoom = (state: RootState): null | string =>
   fromRoom.selectRoom(state.roomReducer);
 export const selectRoomSize = (state: RootState): number =>
   fromRoom.selectRoomSize(state.roomReducer);
+export const selectCreateRoomError = (state: RootState): string =>
+  fromRoom.selectCreateRoomError(state.roomReducer);
+export const selectJoinRoomError = (state: RootState): string =>
+  fromRoom.selectJoinRoomError(state.roomReducer);
 
 // GameUI
 export const selectIsGameOptionsModalOpen = (state: RootState): boolean =>
