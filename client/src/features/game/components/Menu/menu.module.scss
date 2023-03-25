@@ -6,12 +6,17 @@
   justify-content: space-between;
   padding-left: 20px;
 
+  &__roomContainer {
+    position: relative;
+  }
+
   &__room {
     padding-right: 5px;
   }
 
   &__chat {
-    text-align: right;
+    position: absolute;
+    right: 0;
 
     @include screen-max($chat-breakpoint) {
       display: none;

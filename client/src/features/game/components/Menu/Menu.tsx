@@ -23,7 +23,7 @@ export const Menu = () => {
         <Button variant='primary' text='Options' handleClick={handleClick} />
         <audio src={menuSound} ref={audioRef} />
       </div>
-      <div>
+      <div className={styles.menu__roomContainer}>
         <div className={styles.menu__room}>
           <LeaveRoom />
         </div>

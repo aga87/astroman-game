@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAppSelector } from '../../../../redux/typed-hooks';
 import { selectMessages } from '../../../../redux/reducers';
 import styles from './chatBody.module.scss';
 
 export const ChatBody = () => {
   const messages = useAppSelector(selectMessages);
+  const lastMessageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   return (
     <div>
@@ -24,6 +29,7 @@ export const ChatBody = () => {
           </div>
         );
       })}
+      <div ref={lastMessageRef} />
     </div>
   );
 };
