@@ -2,12 +2,20 @@ import React from 'react';
 import { socket } from './socket';
 import { useAppSelector } from './redux/typed-hooks';
 import { selectIsChatOpen } from './redux/reducers';
-import { Chat, Game, Rooms, useGameSocket, useRoomSocket } from './features';
+import {
+  Chat,
+  Game,
+  Rooms,
+  useChatSocket,
+  useGameSocket,
+  useRoomSocket
+} from './features';
 import styles from './app.module.scss';
 
 export const App = () => {
   const isChatOpen = useAppSelector(selectIsChatOpen);
 
+  useChatSocket(socket);
   useGameSocket(socket);
   useRoomSocket(socket);
 
