@@ -1,18 +1,20 @@
 # Astroman
 
-Real-time multiplayer.
+Real-time multiplayer with chat.
 
 ## Screenshots
 
-![](./_screenshots/1screenshot.png)
+![](./_screenshots/screenshot-1.png)
 
-![](./_screenshots/2screenshot.png)
+![](./_screenshots/screenshot-2.png)
 
-![](./_screenshots/3screenshot.png)
+![](./_screenshots/screenshot-3.png)
 
-![](./_screenshots/4screenshot.png)
+![](./_screenshots/screenshot-4.png)
 
-![](./_screenshots/5screenshot.png)
+![](./_screenshots/screenshot-5.png)
+
+![](./_screenshots/screenshot-6.png)
 
 ## Game Mechanics
 
