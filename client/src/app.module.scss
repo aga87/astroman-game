@@ -1,0 +1,14 @@
+@import './scss/helpers/responsive-breakpoints.module.scss';
+@import './scss/variables/magic-numbers.module.scss';
+
+.container {
+  display: flex;
+
+  &__chat {
+    flex: 0 0 $chat-width;
+
+    @include screen-max($chat-breakpoint) {
+      display: none;
+    }
+  }
+}

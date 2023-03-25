@@ -1,0 +1,20 @@
+@import '../../../../scss/helpers/responsive-breakpoints.module.scss';
+@import '../../../../scss/variables/magic-numbers.module.scss';
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+
+  &__room {
+    padding-right: 5px;
+  }
+
+  &__chat {
+    text-align: right;
+
+    @include screen-max($chat-breakpoint) {
+      display: none;
+    }
+  }
+}
