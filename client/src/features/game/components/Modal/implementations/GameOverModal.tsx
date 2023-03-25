@@ -1,5 +1,5 @@
-import React, { useContext, useRef } from 'react';
-import { SocketContext } from '../../../../../context/SocketContext';
+import React, { useRef } from 'react';
+import { socket } from '../../../../../socket';
 import {
   useAppDispatch,
   useAppSelector
@@ -12,7 +12,6 @@ import { Button } from '../../../../../components';
 import menuSound from '../../../audio/menu.mp3';
 
 export const GameOverModal = () => {
-  const socket = useContext(SocketContext);
   const room = useAppSelector(selectRoom);
   const audioRef = useRef<HTMLAudioElement>(null);
   const winner = useAppSelector(selectWinner);
@@ -26,15 +25,15 @@ export const GameOverModal = () => {
   const handlePlayAgainClick = () => {
     handleClick();
     dispatch(resetGame());
-    socket?.emit('reset_game', room);
+    socket.emit('reset_game', room);
   };
 
   const handleQuitGameClick = () => {
     handleClick();
     dispatch(resetGame());
-    socket?.emit('reset_game', room);
+    socket.emit('reset_game', room);
     dispatch(leaveRoom());
-    socket?.emit('leave_room', room);
+    socket.emit('leave_room', room);
   };
 
   return (

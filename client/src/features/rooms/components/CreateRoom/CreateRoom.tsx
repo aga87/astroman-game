@@ -1,15 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { SocketContext } from '../../../../context/SocketContext';
-import { useAppDispatch } from '../../../../redux/typed-hooks';
-import { createRoom } from '../../redux/reducers/room';
-import { setPlayer1 } from '../../../game/redux/reducers/game';
+import React from 'react';
+import { socket } from '../../../../socket';
+import { selectCreateRoomError } from '../../../../redux/reducers';
 import { Button } from '../../../../components';
+import { useAppSelector } from '../../../../redux/typed-hooks';
 
 export const CreateRoom = () => {
-  const socket = useContext(SocketContext);
-  const [roomName, setRoomName] = useState('');
-  const [error, setError] = useState('');
-  const dispatch = useAppDispatch();
+  const error = useAppSelector(selectCreateRoomError);
 
   const handleClick = () => {
     const newRoomName = Math.random()
@@ -17,26 +13,8 @@ export const CreateRoom = () => {
       .substring(2, 5)
       .toUpperCase();
 
-    socket?.emit('create_room', newRoomName);
-    setRoomName(newRoomName);
+    socket.emit('create_room', newRoomName);
   };
-
-  useEffect(() => {
-    socket?.on('create_room_error', err => {
-      setError(err);
-    });
-
-    socket?.on('create_room_success', () => {
-      setError('');
-      dispatch(createRoom(roomName));
-      dispatch(setPlayer1());
-    });
-
-    return () => {
-      socket?.off('create_room_error');
-      socket?.off('create_room_success');
-    };
-  }, [dispatch, socket, roomName]);
 
   return (
     <>
