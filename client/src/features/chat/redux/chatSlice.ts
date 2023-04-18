@@ -28,6 +28,3 @@ const chatSlice = createSlice({
 export default chatSlice.reducer;
 
 export const { receiveMessage, sendMessage } = chatSlice.actions;
-
-// Selectors
-export const selectMessages = (state: State): Message[] => state.messages;

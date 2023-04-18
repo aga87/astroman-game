@@ -1,12 +1,12 @@
 import React from 'react';
 import { useAppSelector } from '../../redux/typed-hooks';
+import { selectIsGameOptionsModalOpen } from './redux/gameUISelectors';
 import {
-  selectIsGameOptionsModalOpen,
   selectIsGameOver,
   selectIsPL1,
-  selectIsNextTurnPL1,
-  selectRoomSize
-} from '../../redux/reducers';
+  selectIsNextTurnPL1
+} from './redux/gameSelectors';
+import { selectRoomSize } from '../rooms/redux/roomSelectors';
 import {
   GameOptionsModal,
   GameOverModal,

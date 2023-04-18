@@ -1,7 +1,7 @@
 import React from 'react';
 import { socket } from '../../../../socket';
 import { useAppSelector } from '../../../../redux/typed-hooks';
-import { selectRoom } from '../../../../redux/reducers';
+import { selectRoom } from '../../redux/roomSelectors';
 import { Button } from '../../../../components';
 
 export const LeaveRoom = () => {

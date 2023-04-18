@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '../../redux/typed-hooks';
-import { selectRoom } from '../../redux/reducers';
+import { selectRoom } from './redux/roomSelectors';
 import { CreateRoom, JoinRoom } from './components';
 import styles from './rooms.module.scss';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '../../../../redux/typed-hooks';
-import { selectRoundProgress } from '../../../../redux/reducers';
+import { selectRoundProgress } from '../../redux/gameSelectors';
 import styles from './roundProgress.module.scss';
 
 export const RoundProgress = () => {

@@ -3,7 +3,7 @@ import { useAppSelector } from '../../../../../redux/typed-hooks';
 import {
   selectChancesPL2,
   selectIsNextTurnPL1
-} from '../../../../../redux/reducers';
+} from '../../../redux/gameSelectors';
 import { drawHeadPL2 } from './drawHeadPL2';
 import { drawTankPL2 } from './drawTankPL2';
 import { drawOxygen } from '../drawOxygen';

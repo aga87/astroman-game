@@ -4,8 +4,6 @@ const initialState = {
   isGameOptionsModalOpen: false
 };
 
-type State = typeof initialState;
-
 const gameUISlice = createSlice({
   name: 'gameUI',
   initialState,
@@ -29,7 +27,3 @@ export default gameUISlice.reducer;
 
 export const { openGameOptionsModal, closeGameOptionsModal } =
   gameUISlice.actions;
-
-// Selectors
-export const selectIsGameOptionsModalOpen = (state: State): boolean =>
-  state.isGameOptionsModalOpen;

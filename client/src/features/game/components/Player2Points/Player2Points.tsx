@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '../../../../redux/typed-hooks';
-import { selectPointsPL2 } from '../../../../redux/reducers';
+import { selectPointsPL2 } from '../../redux/gameSelectors';
 import { Star } from '../../../../components';
 import styles from './player2Points.module.scss';
 
