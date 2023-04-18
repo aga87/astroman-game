@@ -1,12 +1,7 @@
 import { Socket } from 'socket.io-client';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../redux/typed-hooks';
-import {
-  makeMove,
-  passTurn,
-  resetGame,
-  startLevel
-} from './redux/reducers/game';
+import { makeMove, passTurn, resetGame, startLevel } from './redux/gameSlice';
 
 export const useGameSocket = (socket: Socket) => {
   const dispatch = useAppDispatch();

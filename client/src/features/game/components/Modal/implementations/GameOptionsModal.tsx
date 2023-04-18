@@ -4,10 +4,10 @@ import {
   useAppDispatch,
   useAppSelector
 } from '../../../../../redux/typed-hooks';
-import { selectRoom } from '../../../../../redux/reducers';
-import { closeGameOptionsModal } from '../../../redux/reducers/gameUI';
-import { resetGame } from '../../../redux/reducers/game';
-import { leaveRoom } from '../../../../rooms/redux/reducers/room';
+import { selectRoom } from '../../../../rooms/redux/roomSelectors';
+import { closeGameOptionsModal } from '../../../redux/gameUISlice';
+import { resetGame } from '../../../redux/gameSlice';
+import { leaveRoom } from '../../../../rooms/redux/roomSlice';
 import { Modal } from '../Modal';
 import { Button } from '../../../../../components';
 import menuSound from '../../../audio/menu.mp3';

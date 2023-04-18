@@ -8,8 +8,8 @@ import {
   joinRoomError,
   leaveRoom,
   updateRoomSize
-} from './redux/reducers/room';
-import { setPlayer1 } from '../game/redux/reducers/game';
+} from './redux/roomSlice';
+import { setPlayer1 } from '../game/redux/gameSlice';
 
 export const useRoomSocket = (socket: Socket) => {
   const dispatch = useAppDispatch();

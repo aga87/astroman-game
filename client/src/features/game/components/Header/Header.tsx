@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '../../../../redux/typed-hooks';
-import { selectRoom } from '../../../../redux/reducers';
+import { selectRoom } from '../../../rooms/redux/roomSelectors';
 import styles from './header.module.scss';
 
 export const Header = () => {

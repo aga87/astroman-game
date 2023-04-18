@@ -7,8 +7,6 @@ const initialState = {
   joinRoomError: ''
 };
 
-type State = typeof initialState;
-
 const roomSlice = createSlice({
   name: 'room',
   initialState,
@@ -65,11 +63,3 @@ export const {
   leaveRoom,
   updateRoomSize
 } = roomSlice.actions;
-
-// Selectors
-export const selectRoom = (state: State): null | string => state.room;
-export const selectRoomSize = (state: State): number => state.roomSize;
-export const selectCreateRoomError = (state: State): string =>
-  state.createRoomError;
-export const selectJoinRoomError = (state: State): string =>
-  state.joinRoomError;

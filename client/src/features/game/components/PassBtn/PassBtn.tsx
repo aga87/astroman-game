@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { socket } from '../../../../socket';
 import { useAppDispatch, useAppSelector } from '../../../../redux/typed-hooks';
-import { selectRoom, selectIsPassAllowed } from '../../../../redux/reducers';
-import { passTurn } from '../../redux/reducers/game';
+import { selectRoom } from '../../../rooms/redux/roomSelectors';
+import { selectIsPassAllowed } from '../../redux/gameSelectors';
+import { passTurn } from '../../redux/gameSlice';
 import { Button } from '../../../../components';
 import passSound from './pass.mp3';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch } from '../../../../redux/typed-hooks';
-import { toggleChat } from '../../redux/reducers/chatUI';
+import { toggleChat } from '../../redux/chatUISlice';
 import chatIcon from './chat-64.png';
 import styles from './chatToggle.module.scss';
 

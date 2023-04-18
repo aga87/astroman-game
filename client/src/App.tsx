@@ -1,7 +1,7 @@
 import React from 'react';
 import { socket } from './socket';
 import { useAppSelector } from './redux/typed-hooks';
-import { selectIsChatOpen } from './redux/reducers';
+import { selectIsChatOpen } from './features/chat/redux/chatUISelectors';
 import {
   Chat,
   Game,

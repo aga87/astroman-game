@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useAppSelector } from '../../../../redux/typed-hooks';
-import { selectMessages } from '../../../../redux/reducers';
+import { selectMessages } from '../../redux/chatSelectors';
 import styles from './chatBody.module.scss';
 
 export const ChatBody = () => {

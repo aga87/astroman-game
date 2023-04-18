@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { socket } from '../../../../socket';
 import { useAppDispatch, useAppSelector } from '../../../../redux/typed-hooks';
-import { selectRoom, selectAvailLetters } from '../../../../redux/reducers';
-import { makeMove } from '../../redux/reducers/game';
+import { selectRoom } from '../../../rooms/redux/roomSelectors';
+import { makeMove } from '../../redux/gameSlice';
+import { selectAvailLetters } from '../../redux/gameSelectors';
 import { Button } from '../../../../components';
 import { alphabet } from '../../utils';
 import guessSound from './guess.mp3';

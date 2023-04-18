@@ -1,7 +1,7 @@
 import React from 'react';
 import { socket } from '../../../../socket';
 import { useAppSelector } from '../../../../redux/typed-hooks';
-import { selectJoinRoomError } from '../../../../redux/reducers';
+import { selectJoinRoomError } from '../../redux/roomSelectors';
 import { Button, TextInput, useTextInput } from '../../../../components';
 import styles from './joinRoom.module.scss';
 

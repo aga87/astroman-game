@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { socket } from '../../../../socket';
 import { useAppDispatch, useAppSelector } from '../../../../redux/typed-hooks';
-import { selectRoom, selectPlayer } from '../../../../redux/reducers';
-import { sendMessage } from '../../redux/reducers/chat';
+import { selectPlayer } from '../../../game/redux/gameSelectors';
+import { selectRoom } from '../../../rooms/redux/roomSelectors';
+import { sendMessage } from '../../redux/chatSlice';
 import { TextInput } from '../../../../components';
 
 export const ChatFooter = () => {

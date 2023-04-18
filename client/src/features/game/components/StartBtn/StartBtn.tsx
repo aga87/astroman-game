@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { socket } from '../../../../socket';
 import { useAppDispatch, useAppSelector } from '../../../../redux/typed-hooks';
-import { selectIsRoundOver, selectRoom } from '../../../../redux/reducers';
-import { startLevel } from '../../redux/reducers/game';
+import { selectRoom } from '../../../rooms/redux/roomSelectors';
+import { startLevel } from '../../redux/gameSlice';
+import { selectIsRoundOver } from '../../redux/gameSelectors';
 import { Button } from '../../../../components';
 import startSound from './start.mp3';
 import { getRandomBook } from '../../utils';

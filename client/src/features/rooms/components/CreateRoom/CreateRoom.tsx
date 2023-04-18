@@ -1,8 +1,8 @@
 import React from 'react';
 import { socket } from '../../../../socket';
-import { selectCreateRoomError } from '../../../../redux/reducers';
-import { Button } from '../../../../components';
 import { useAppSelector } from '../../../../redux/typed-hooks';
+import { selectCreateRoomError } from '../../redux/roomSelectors';
+import { Button } from '../../../../components';
 
 export const CreateRoom = () => {
   const error = useAppSelector(selectCreateRoomError);

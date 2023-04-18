@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useAppDispatch } from '../../../../redux/typed-hooks';
-import { openGameOptionsModal } from '../../redux/reducers/gameUI';
+import { openGameOptionsModal } from '../../redux/gameUISlice';
 import { Button } from '../../../../components';
 import { LeaveRoom } from '../../../rooms/components';
 import { ChatToggle } from '../../../chat/components';

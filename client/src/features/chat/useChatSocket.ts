@@ -1,7 +1,7 @@
 import { Socket } from 'socket.io-client';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../redux/typed-hooks';
-import { receiveMessage } from './redux/reducers/chat';
+import { receiveMessage } from './redux/chatSlice';
 
 export const useChatSocket = (socket: Socket) => {
   const dispatch = useAppDispatch();
