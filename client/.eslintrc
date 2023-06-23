@@ -9,7 +9,7 @@
     "plugin:prettier/recommended"
   ],
   "parserOptions": {
-    "project": "./client/tsconfig.json"
+    "project": "./tsconfig.json"
   },
   "rules": {
     "react/function-component-definition": [
