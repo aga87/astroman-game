@@ -2,6 +2,12 @@
 
 Real-time multiplayer with chat.
 
+## Demo
+
+See the [live demo](https://astroman-game.vercel.app/).
+
+The server is deployed to [Render](https://render.com/) and the React client to [Vercel](https://vercel.com).
+
 ## Screenshots
 
 ![](./_screenshots/screenshot-1.png)
